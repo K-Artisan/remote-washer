@@ -538,6 +538,7 @@ public class WasherActivity extends BaseActivity {
     }
 
     private void initReciveDataEvent() {
+        //注册监听，当接收到完整的帧数据
         viewModel.washerDataResolver.setOnReciveNewCompleteDataistener(new WasherDataResolver.onRecieveNewCompleteDataDataListener() {
             @Override
             public void onRecieveNewCompleteDataData(byte[] data) {
