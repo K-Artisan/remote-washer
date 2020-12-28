@@ -1,0 +1,705 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.azirtime.remote.client.ui.washer.WasherViewModel" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:fitsSystemWindows="true"
+            app:contentScrim="?attr/colorPrimary">
+
+            <!--折叠控件
+   layout_collapseMode：折叠模式：
+     parallax 折叠过程中位置产生一定的位移，
+     pin：折叠过程中位置保持不变
+-->
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/collapsingToolbarLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:contentScrim="?attr/colorPrimary"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    app:layout_collapseMode="pin" />
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <!--展示区-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="320dp"
+                    android:background="@color/colorPrimary_washer"
+                    android:orientation="vertical">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp">
+
+                        <com.azirtime.remote.client.view.ConnectStatusTipView
+                            android:id="@+id/connect_status_view"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:layout_gravity="center_vertical|right"
+                            android:layout_margin="@dimen/dp_10" />
+                    </FrameLayout>
+
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tv_washer_remain_time_label"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="@string/remain_time"
+                                android:textColor="@color/color_washer_text"
+                                android:textSize="18sp" />
+
+                            <TextView
+                                android:id="@+id/tv_washer_remain_time"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_10"
+                                android:gravity="center"
+                                android:textColor="@color/color_washer_text"
+                                android:textSize="45sp"
+                                tools:text="00 : 00" />
+
+                            <TextView
+                                android:id="@+id/tv_washer_work_status"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_10"
+                                android:gravity="center"
+                                android:textColor="@color/color_washer_text"
+                                android:textSize="18sp"
+                                tools:text="待机中" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_60"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+                                    android:id="@+id/washer_ctl_view_power"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <ImageView
+                                        android:id="@+id/washer_ctl_view_power_img"
+                                        android:layout_width="30dp"
+                                        android:layout_height="35dp"
+                                        android:src="@drawable/ic_washer_switch_on" />
+
+                                    <TextView
+                                        android:id="@+id/washer_ctl_view_power_text"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="20dp"
+                                        android:layout_marginTop="5dp"
+                                        android:text="开关"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/color_washer_text"
+                                        android:textSize="@dimen/sp_14" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/washer_ctl_view_mode"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <ImageView
+                                        android:layout_width="30dp"
+                                        android:layout_height="35dp"
+                                        android:scaleType="centerCrop"
+                                        android:src="@drawable/ic_washer_washing_mode_4" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="20dp"
+                                        android:layout_marginTop="5dp"
+                                        android:text="模式"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/color_washer_text"
+                                        android:textSize="@dimen/sp_14" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/washer_ctl_view_run_switch"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <ImageView
+                                        android:id="@+id/washer_ctl_view_run_switch_img"
+                                        android:layout_width="35dp"
+                                        android:layout_height="35dp"
+                                        android:scaleType="centerCrop"
+                                        android:src="@drawable/ic_washer_washing_start_2" />
+
+                                    <TextView
+                                        android:id="@+id/washer_ctl_view_run_switch_text"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="20dp"
+                                        android:layout_marginTop="5dp"
+                                        android:text="开始"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/color_washer_text"
+                                        android:textSize="@dimen/sp_14" />
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </FrameLayout>
+
+                </LinearLayout>
+
+                <!--参数区-->
+                <androidx.core.widget.NestedScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <FrameLayout
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/common_navigator_height"
+                                android:background="@color/colorPrimary_washer">
+
+                                <net.lucode.hackware.magicindicator.MagicIndicator
+                                    android:id="@+id/washer_ctr_mode_magic_indicator"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="@dimen/dp_10"
+                                    android:layout_marginRight="@dimen/dp_20"
+                                    android:layout_gravity="center_horizontal" />
+
+                            </FrameLayout>
+
+                            <!--波浪-->
+                            <FrameLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="15dp"
+                                android:background="@color/colorPrimary_washer">
+
+                                <FrameLayout
+                                    android:id="@+id/washer_wave_view_root"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:visibility="gone"
+                                    tools:visibility="visible">
+
+                                    <com.azirtime.support.view.WaveView3
+                                        android:id="@+id/washer_wave_view"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_gravity="bottom" />
+
+                                    <!--             <ImageView
+                                                        android:id="@+id/image"
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:layout_gravity="bottom|center"
+                                                        android:background="@mipmap/ic_launcher" />-->
+                                </FrameLayout>
+                            </FrameLayout>
+
+                            <FrameLayout
+                                android:id="@+id/fragment_container"
+                                android:layout_width="match_parent"
+                                android:layout_height="300dp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/washer_debug_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="500dp"
+                            android:visibility="gone">
+
+                            <androidx.core.widget.NestedScrollView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:id="@+id/debug_tv_recive_data"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent" />
+                            </androidx.core.widget.NestedScrollView>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:visibility="visible">
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="@dimen/washer_config_cell_mt">
+
+                                <androidx.constraintlayout.widget.ConstraintLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/washer_config_cell_h"
+                                    android:layout_marginLeft="@dimen/washer_config_cell_ml"
+                                    android:layout_marginRight="@dimen/washer_config_cell_mr">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="16dp"
+                                        android:text="洗衣机"
+                                        android:textSize="@dimen/washer_config_cell_ts"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:layout_constraintVertical_bias="0.555" />
+
+                                    <com.jaredrummler.materialspinner.MaterialSpinner
+                                        android:id="@+id/washer_cfg_runstatus"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="关机"
+                                        android:textSize="@dimen/washer_config_cell_ts"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        tools:text="关机" />
+
+                                </androidx.constraintlayout.widget.ConstraintLayout>
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="@dimen/washer_config_cell_mt">
+
+                                <androidx.constraintlayout.widget.ConstraintLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/washer_config_cell_h"
+                                    android:layout_marginLeft="@dimen/washer_config_cell_ml"
+                                    android:layout_marginRight="@dimen/washer_config_cell_mr">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="16dp"
+                                        android:text="工作状态"
+                                        android:textSize="@dimen/washer_config_cell_ts"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:layout_constraintVertical_bias="0.555" />
+
+                                    <TextView
+                                        android:id="@+id/washer_cfg_work_status"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginEnd="16dp"
+                                        android:text="停止"
+                                        android:textSize="@dimen/washer_config_cell_ts"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        tools:text="停止" />
+
+                                </androidx.constraintlayout.widget.ConstraintLayout>
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="@dimen/washer_config_cell_mt">
+
+                                <androidx.constraintlayout.widget.ConstraintLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/washer_config_cell_h"
+                                    android:layout_marginLeft="@dimen/washer_config_cell_ml"
+                                    android:layout_marginRight="@dimen/washer_config_cell_mr">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="16dp"
+                                        android:text="已用时 (分钟)"
+                                        android:textSize="@dimen/washer_config_cell_ts"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:layout_constraintVertical_bias="0.555" />
+
+                                    <TextView
+                                        android:id="@+id/washer_cfg_used_time"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginEnd="16dp"
+                                        android:text="0"
+                                        android:textSize="@dimen/washer_config_cell_ts_num"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        tools:text="0" />
+
+                                </androidx.constraintlayout.widget.ConstraintLayout>
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="@dimen/washer_config_cell_mt">
+
+                                <androidx.constraintlayout.widget.ConstraintLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/washer_config_cell_h"
+                                    android:layout_marginLeft="@dimen/washer_config_cell_ml"
+                                    android:layout_marginRight="@dimen/washer_config_cell_mr">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="16dp"
+                                        android:text="模式"
+                                        android:textSize="@dimen/washer_config_cell_ts"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:layout_constraintVertical_bias="0.555" />
+
+                                    <com.jaredrummler.materialspinner.MaterialSpinner
+                                        android:id="@+id/washer_cfg_mode"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="标准洗"
+                                        android:textSize="@dimen/washer_config_cell_ts"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        tools:text="标准洗" />
+
+                                </androidx.constraintlayout.widget.ConstraintLayout>
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="@dimen/washer_config_cell_mt">
+
+                                <androidx.constraintlayout.widget.ConstraintLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/washer_config_cell_h"
+                                    android:layout_marginLeft="@dimen/washer_config_cell_ml"
+                                    android:layout_marginRight="@dimen/washer_config_cell_mr">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="16dp"
+                                        android:text="水位"
+                                        android:textSize="@dimen/washer_config_cell_ts"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:layout_constraintVertical_bias="0.555" />
+
+                                    <com.jaredrummler.materialspinner.MaterialSpinner
+                                        android:id="@+id/washer_cfg_water_level"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="低"
+                                        android:textSize="@dimen/washer_config_cell_ts_num"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        tools:text="低" />
+
+                                </androidx.constraintlayout.widget.ConstraintLayout>
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="@dimen/washer_config_cell_mt">
+
+                                <androidx.constraintlayout.widget.ConstraintLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/washer_config_cell_h"
+                                    android:layout_marginLeft="@dimen/washer_config_cell_ml"
+                                    android:layout_marginRight="@dimen/washer_config_cell_mr">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="16dp"
+                                        android:text="温度 (℃)"
+                                        android:textSize="@dimen/washer_config_cell_ts"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:layout_constraintVertical_bias="0.555" />
+
+                                    <cn.com.cesgroup.numpickerview.NumberPickerView
+                                        android:id="@+id/washer_cfg_temperatrue"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        app:addBackground="@android:color/white"
+                                        app:backgroud="@android:color/white"
+                                        app:buttonWidth="30dp"
+                                        app:editable="true"
+                                        app:editextWidth="32dp"
+                                        app:individer="@drawable/num_picker_divider_horizontal"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:subBackground="@android:color/white"
+                                        app:textColor="@android:color/black"
+                                        app:textSize="@dimen/washer_config_cell_ts_num"
+                                        tools:text="0" />
+
+
+                                </androidx.constraintlayout.widget.ConstraintLayout>
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="@dimen/washer_config_cell_mt">
+
+                                <androidx.constraintlayout.widget.ConstraintLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/washer_config_cell_h"
+                                    android:layout_marginLeft="@dimen/washer_config_cell_ml"
+                                    android:layout_marginRight="@dimen/washer_config_cell_mr">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="16dp"
+                                        android:text="洗涤时间 (分钟)"
+                                        android:textSize="@dimen/washer_config_cell_ts"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:layout_constraintVertical_bias="0.555" />
+
+                                    <cn.com.cesgroup.numpickerview.NumberPickerView
+                                        android:id="@+id/washer_cfg_washing_time"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        app:addBackground="@android:color/white"
+                                        app:backgroud="@android:color/white"
+                                        app:buttonWidth="30dp"
+                                        app:editable="true"
+                                        app:editextWidth="32dp"
+                                        app:individer="@drawable/num_picker_divider_horizontal"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:subBackground="@android:color/white"
+                                        app:textColor="@android:color/black"
+                                        app:textSize="@dimen/washer_config_cell_ts_num"
+                                        tools:text="0" />
+
+                                </androidx.constraintlayout.widget.ConstraintLayout>
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="@dimen/washer_config_cell_mt">
+
+                                <androidx.constraintlayout.widget.ConstraintLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/washer_config_cell_h"
+                                    android:layout_marginLeft="@dimen/washer_config_cell_ml"
+                                    android:layout_marginRight="@dimen/washer_config_cell_mr">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="16dp"
+                                        android:text="漂洗时间 (分钟)"
+                                        android:textSize="@dimen/washer_config_cell_ts"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:layout_constraintVertical_bias="0.555" />
+
+                                    <cn.com.cesgroup.numpickerview.NumberPickerView
+                                        android:id="@+id/washer_cfg_rinsing_time"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        app:addBackground="@android:color/white"
+                                        app:backgroud="@android:color/white"
+                                        app:buttonWidth="30dp"
+                                        app:editable="true"
+                                        app:editextWidth="32dp"
+                                        app:individer="@drawable/num_picker_divider_horizontal"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:subBackground="@android:color/white"
+                                        app:textColor="@android:color/black"
+                                        app:textSize="@dimen/washer_config_cell_ts_num"
+                                        tools:text="0" />
+
+                                </androidx.constraintlayout.widget.ConstraintLayout>
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="@dimen/washer_config_cell_mt">
+
+                                <androidx.constraintlayout.widget.ConstraintLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/washer_config_cell_h"
+                                    android:layout_marginLeft="@dimen/washer_config_cell_ml"
+                                    android:layout_marginRight="@dimen/washer_config_cell_mr">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="16dp"
+                                        android:text="甩干时间 (分钟)"
+                                        android:textSize="@dimen/washer_config_cell_ts"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:layout_constraintVertical_bias="0.555" />
+
+                                    <cn.com.cesgroup.numpickerview.NumberPickerView
+                                        android:id="@+id/washer_cfg_spin_time"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        app:addBackground="@android:color/white"
+                                        app:backgroud="@android:color/white"
+                                        app:buttonWidth="30dp"
+                                        app:editable="true"
+                                        app:editextWidth="32dp"
+                                        app:individer="@drawable/num_picker_divider_horizontal"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:subBackground="@android:color/white"
+                                        app:textColor="@android:color/black"
+                                        app:textSize="@dimen/washer_config_cell_ts_num"
+                                        tools:text="0" />
+
+                                </androidx.constraintlayout.widget.ConstraintLayout>
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="@dimen/washer_config_cell_mt">
+
+                                <androidx.constraintlayout.widget.ConstraintLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/washer_config_cell_h"
+                                    android:layout_marginLeft="@dimen/washer_config_cell_ml"
+                                    android:layout_marginRight="@dimen/washer_config_cell_mr">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="16dp"
+                                        android:text="烘干时间 (分钟)"
+                                        android:textSize="@dimen/washer_config_cell_ts"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:layout_constraintVertical_bias="0.555" />
+
+                                    <cn.com.cesgroup.numpickerview.NumberPickerView
+                                        android:id="@+id/washer_cfg_dry_time"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        app:addBackground="@android:color/white"
+                                        app:backgroud="@android:color/white"
+                                        app:buttonWidth="30dp"
+                                        app:editable="true"
+                                        app:editextWidth="32dp"
+                                        app:individer="@drawable/num_picker_divider_horizontal"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:subBackground="@android:color/white"
+                                        app:textColor="@android:color/black"
+                                        app:textSize="@dimen/washer_config_cell_ts_num"
+                                        tools:text="0" />
+
+                                </androidx.constraintlayout.widget.ConstraintLayout>
+                            </androidx.cardview.widget.CardView>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </androidx.core.widget.NestedScrollView>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">remote</string>
+    <string name="my_devices">我的设备</string>
+    <string name="addBluetoothDeviceTitle">蓝牙</string>
+    <string name="searchBluetoothDevice">搜索蓝牙设备</string>
+    <string name="bluetooth_unbonded">已配对的设备</string>
+    <string name="bluetooth_can_used_device">可用的设备</string>
+    <string name="bluetooth_device_notfound">没有找到设备</string>
+    <string name="bluetooth_refuse_authorization">您已拒绝授权，无法搜索蓝牙设备</string>
+
+    <string name="searching_bluetooth_device">正在搜索蓝牙设备...</string>
+    <string name="status_connect_failse">无法连接设备</string>
+    <string name="status_waitting_connect">等待连接...</string>
+    <string name="status_connecting">正在连接...</string>
+    <string name="status_connected">已连接</string>
+    <string name="status_conndected_device">设备已连接</string>
+
+    <!--洗衣机-->
+    <string name="remain_time">剩余时间</string>
+    <string name="device_powerOn">开机</string>
+    <string name="device_powerOff">关机</string>
+    <string name="device_suspend">暂停</string>
+    <!--洗衣机运行状态-->
+    <string name="washer_run_status_stop">停止</string>
+    <string name="washer_run_status_runing">启动</string>
+    <string name="washer_run_status_suspend">暂停</string>
+    <string name="washer_mode_stop">停止</string>
+    <!--洗衣机工作模式-->
+    <string name="washer_mode_standard">标准</string>
+    <string name="washer_mode_strong">强</string>
+    <string name="washer_mode_week">弱</string>
+    <string name="washer_mode_single_wash">单洗</string>
+    <string name="washer_mode_rinse">漂洗</string>
+    <string name="washer_mode_spin">甩干</string>
+    <string name="washer_mode_dry">烘干</string>
+    <!--洗衣机工作状态-->
+    <string name="washer_work_status_stop">停止</string>
+    <string name="washer_work_status_jinshui">进水</string>
+    <string name="washer_work_status_washing">洗涤</string>
+    <string name="washer_work_status_paishui">排水</string>
+    <string name="washer_work_status_rinsing">漂洗</string>
+    <string name="washer_work_status_spin">甩干</string>
+    <string name="washer_work_status_dry">烘干</string>
+    <!--洗衣机水位-->
+    <string name="washer_waterlevel_low">低</string>
+    <string name="washer_waterlevel_mid">中</string>
+    <string name="washer_waterlevel_hight">高</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

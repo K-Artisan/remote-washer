@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--<color name="colorPrimary">#5F9EA0</color>
+    <color name="colorPrimaryDark">#5F9EA0</color>
+    <color name="colorAccent">#5F9EA0</color>-->
+
+    <color name="colorPrimary">#5F9EA0</color>
+    <color name="colorPrimaryDark">#5F9EA0</color>
+    <color name="colorAccent">#5F9EA0</color>
+
+<!--    <color name="colorPrimary_washer">#5EC3EC</color>
+    <color name="colorPrimaryDark_washer">#5EC3EC</color>
+    <color name="colorAccent_washer">#5EC3EC</color>-->
+<!--    <color name="colorPrimary_washer">#63CDDA</color>
+    <color name="colorPrimaryDark_washer">#63CDDA</color>
+    <color name="colorAccent_washer">#63CDDA</color>-->
+    <color name="colorPrimary_washer">#459ADA</color>
+    <color name="colorPrimaryDark_washer">#459ADA</color>
+    <color name="colorAccent_washer">#459ADA</color>
+    <color name="color_washer_text">#FFFFFF</color>
+    <color name="color_washer_progress">#FFFFFF</color>
+    <color name="color_washer_mode_normal">#88ffffff</color>
+
+    <color name="colorBluetoothWave">#e6e6e6</color>
+
+    <color name="colorWarming">#d81e06</color>
+    <color name="colorWarming2">#F24866</color>
+
+    <color name="color_power_off">#d81e06</color>
+    <color name="color_power_on">#1afa29</color>
+    <color name="color_power_suspend">#f4ea2a</color>
+
+
+    ProgressBar
+
+</resources>

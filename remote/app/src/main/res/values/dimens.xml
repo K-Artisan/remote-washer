@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="device_item_hw">100dp</dimen>
+    <dimen name="device_item_img_hw">80dp</dimen>
+
+    <dimen name="devic_item_textsize">20sp</dimen>
+
+
+    <dimen name="add_bluetooth_device_item_hw">60dp</dimen>
+    <dimen name="add_bluetooth_device_item_img_hw">40dp</dimen>
+    <dimen name="add_bluetooth_devic_item_textsize">16sp</dimen>
+    <dimen name="dp_1">1dp</dimen>
+    <dimen name="dp_2">2dp</dimen>
+    <dimen name="dp_5">5dp</dimen>
+    <dimen name="dp_10">10dp</dimen>
+    <dimen name="dp_20">20dp</dimen>
+    <dimen name="dp_30">30dp</dimen>
+    <dimen name="sp_12">12sp</dimen>
+    <dimen name="sp_18">18sp</dimen>
+    <dimen name="sp_28">28sp</dimen>
+    <dimen name="sp_30">30sp</dimen>
+    <dimen name="dp_40">40dp</dimen>
+    <dimen name="sp_16">16sp</dimen>
+    <dimen name="dp_25">25dp</dimen>
+    <dimen name="sp_14">14sp</dimen>
+    <dimen name="dp_18">18dp</dimen>
+    <dimen name="dp_60">60dp</dimen>
+
+    <dimen name="washer_config_cell_mt">1dp</dimen>
+    <dimen name="washer_config_cell_h">60dp</dimen>
+    <dimen name="washer_config_cell_mr">10dp</dimen>
+    <dimen name="washer_config_cell_ml">10dp</dimen>
+    <dimen name="washer_config_cell_wh_img">25dp</dimen>
+    <dimen name="washer_config_cell_ts">18sp</dimen>
+    <dimen name="washer_config_cell_ts_num">20sp</dimen>
+    <dimen name="common_navigator_height">45dp</dimen>
+
+</resources>

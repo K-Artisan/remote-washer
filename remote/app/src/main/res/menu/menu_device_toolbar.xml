@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item  android:id="@+id/toolbar_add_wifi_device"
+        android:icon="@drawable/ic_add_wifi_device_withe"
+        android:title="添加Wifi设备"
+        app:showAsAction="always"/>
+
+    <item  android:id="@+id/toolbar_add_bluetooth_device"
+        android:icon="@drawable/ic_add_bluetooth_withe"
+        android:title="添加蓝牙设备"
+        app:showAsAction="always"/>
+
+</menu>

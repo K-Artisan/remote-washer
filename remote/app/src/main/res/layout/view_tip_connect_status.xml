@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/view_cntsts_container"
+    android:layout_gravity="center"
+    tools:layout_height="25dp"
+    tools:layout_width="25dp">
+
+        <ImageView
+            android:id="@+id/view_cntsts_img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_disconnect" />
+
+     <!-- android:indeterminateDrawable="@drawable/progressbar_loading"-->
+        <ProgressBar android:id="@+id/view_cntsts_pgBar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:indeterminateTint="@color/color_washer_progress"
+            android:visibility="gone"
+            tools:visibility="gone"/>
+
+</FrameLayout>

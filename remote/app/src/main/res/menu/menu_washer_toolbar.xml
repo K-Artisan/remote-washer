@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+   <item  android:id="@+id/washer_toolbar_debug"
+        android:icon="@drawable/ic_debug"
+        android:title="调试工具"
+        app:showAsAction="ifRoom"/>
+
+</menu>
